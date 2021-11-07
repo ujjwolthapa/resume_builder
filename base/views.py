@@ -1,12 +1,13 @@
 from django.contrib.auth import authenticate,login,logout
 from django.shortcuts import redirect, render
 from django import forms
-from .forms import MyUserCreationForm
+from .forms import MyUserCreationForm,CvForm
 from .models import User,Education,Experience,Skill
 from django.contrib import messages
 # Create your views here.
 
 def CvForm(request):
+    
     return render(request,'cv-form.html')
 
 
@@ -15,7 +16,7 @@ def Home(request):
 
 def LoginPage(request):
     if request.user.is_authenticated:
-        return redirect('dashboard')
+        return redirect('home')
     if request.method == 'POST':
         username = request.POST.get('username').lower()
         password = request.POST.get('password')
@@ -29,7 +30,7 @@ def LoginPage(request):
 
         if user is not None:
             login(request,user)
-            return redirect('dashboard')
+            return redirect('home')
         else:
             messages.error(request,'password is wrong')
         
@@ -48,9 +49,9 @@ def RegisterPage(request):
             user.username = user.username.lower()
             user.save()
             login(request,user)
-            return redirect('dashboard')
+            return redirect('home')
         else:
-            messages.error(request,'An eroor have occured')
+            messages.error(request,'An error have occured')
     return render(request,'register.html',{'form':form})
 
 def DashboardPage(request):

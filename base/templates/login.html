@@ -1,28 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>login</h1>
-    <div>
-        <form action="" method="POST">
-            {% csrf_token %}
-            <div>
-                <label for="username">Username</label>
-                <input type="text" name="username" required/>
-                <br>
-                <br>
-                <label for="password">Password</label>
-                <input type="password" name="password" required/>
-                <input type="submit">
-            </div>
-            
-        </form>
-    </div>
+{% extends "app.html" %}
+
+{% block content %}
+<h1 class="mx-auto my-0 text-uppercase">login</h1>
+<main class="form-signin">
+    {% for message in messages  %}
+            <li class="text-danger">{{message}}</li>
+    {% endfor %}
+    <form action="" method="POST">
+      {% csrf_token %}
+      
+  
+      <div class="form-floating mb-2">
+        <input type="text" class="form-control" id="floatingInput" placeholder="admin" name="username">
+        <label for="floatingInput">User Name</label>
+      </div>
+      <div class="form-floating mb-2">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+        <label for="floatingPassword">Password</label>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+     
+    </form>
+  </main>
+
+{% endblock content %}
+
    
-</body>
-</html>

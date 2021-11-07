@@ -6,7 +6,7 @@ from .models import User
 class CvForm(ModelForm):
     class Meta:
         model = User
-        fields = '__all__'
+        fields = ['name','job_title','phoneNumber','email','instagram','location','about','avatar']
 
 class MyUserCreationForm(UserCreationForm):
     class Meta:
