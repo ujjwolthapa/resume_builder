@@ -20,7 +20,7 @@ class Skill(models.Model):
     name = models.CharField(max_length=200,null=True)
 
     def __str__(self):
-        self.name
+       return self.name
 
 class Experience(models.Model):
     User = models.ForeignKey(User,on_delete=CASCADE)
@@ -29,7 +29,9 @@ class Experience(models.Model):
     timeend = models.DateField(null=True)
 
     def __str__(self):
-        self.name
+        return self.name
+
+      
 
 class Education(models.Model):
     User = models.ForeignKey(User,on_delete=CASCADE)
@@ -38,7 +40,7 @@ class Education(models.Model):
     timeend = models.DateField(null=True)
 
     def __str__(self):
-        self.name
+        return self.name
 
 
 

@@ -1,10 +1,13 @@
 
 {% extends "app.html" %}
 {% block content %}
+<div class="mydiv" style="display:block; margin-top: 250px;    
+text-align: center;">
+    <h1 style="font-size: 70px;">CV GENERATOR</h1>
+    <h2 style="font-size: 30px;">Web Application which will generate CV for you
+    </h2>
+    <a class="btn btn-primary" style="font-size: 20px;" href="{% url 'cv-form' request.user.id %}">Create CV</a>
+</div>
 
-<h1 class="mx-auto my-0 text-uppercase">CV GENERATOR</h1>
-<h2 class="text-white-50 mx-auto mt-2 mb-5">Web Application which will generate CV for you
-</h2>
-<a class="btn btn-primary" href="{% url 'cv-form' %}">Create CV</a>
   
 {% endblock content %}

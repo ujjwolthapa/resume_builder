@@ -83,7 +83,7 @@ DATABASES = {
     }
 }
 
-
+DATE_FORMAT = 'YYYY-MM-DD'
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
