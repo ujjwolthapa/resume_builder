@@ -27,8 +27,7 @@
           </div>
           
           <a href="#" onClick="addskill()" >add  skill</a>
-            <br>
-            <br>
+    
             <div class="form__group form__group file_inputs" id="file_education">
               {% for education in educations %}
                 <label >education name</label>
@@ -38,7 +37,6 @@
                 <label>Ended Date</label>
                 <input type="date" name="timeend" id="timeend" value="{{education.timeend|date:'Y-m-d'}}"/>
               {% endfor %}
-              <br>
               <br>
               <!-- <label >education</label>
                 <input type="text" name="education" id="education" value="" style="margin-bottom: 15px;"/>
@@ -54,21 +52,18 @@
 
             <div class="form__group form__group file_inputs" id="file_experience">
               {% for experience in experiences %}
-                <label >experience</label>
                 <input type="text" name="experience" id="experience" value="{{experience.name}}" style="margin-bottom: 15px;"/>
                 <label>Started Date</label>
                 <input type="date" name="etimestart" id="etimestart"  value="{{experience.timestart|date:'Y-m-d'}}"/>
                 <label>Ended Date</label>
-                <input type="date" name="etimeend" id="etimestart" value="{{experience.timeend|date:'Y-m-d'}}"/>
+                <input type="date" name="etimeend" id="etimeend" value="{{experience.timeend|date:'Y-m-d'}}"/>
               {% endfor %}
-              <label >experience</label>
+              <!-- <label >experience</label>
               <input type="text" name="experience" id="experience" value="{{experience.name}}" style="margin-bottom: 15px;"/>
               <label>Started Date</label>
               <input type="date" name="etimestart" id="etimestart"  value="{{experience.timestart|date:'Y-m-d'}}"/>
               <label>Ended Date</label>
-              <input type="date" name="etimeend" id="etimestart" value="{{experience.timeend|date:'Y-m-d'}}"/>
-              <br>
-              <br>
+              <input type="date" name="etimeend" id="etimestart" value="{{experience.timeend|date:'Y-m-d'}}"/> -->
             </div>
               <a href="#" onclick="addexperience()">Add Experience</a>
               <br><br>

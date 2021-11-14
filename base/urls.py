@@ -12,5 +12,6 @@ urlpatterns = [
     path('logout',views.LogoutUser,name="logout"),
     path('dashboard',views.DashboardPage,name="dashboard"),
     path('register',views.RegisterPage,name="register"),
-    path('cv-form/<str:pk>',views.CvFormPage,name="cv-form")
+    path('cv-form/<str:pk>',views.CvFormPage,name="cv-form"),
+    path('resume',views.CvReady,name="resume")
 ]

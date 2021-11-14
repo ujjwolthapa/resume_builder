@@ -39,7 +39,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'base.apps.BaseConfig',
     "phonenumber_field",
+     'rest_framework',
+     'rest_framework.authtoken',
+    
 ]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
+
 AUTH_USER_MODEL = 'base.User'
 
 MIDDLEWARE = [

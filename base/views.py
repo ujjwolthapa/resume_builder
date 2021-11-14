@@ -1,3 +1,4 @@
+from django import template
 from django.contrib.auth import authenticate,login,logout
 from django.db import reset_queries
 from django.shortcuts import redirect, render
@@ -5,6 +6,13 @@ from django import forms
 from .forms import MyUserCreationForm,CvForm
 from .models import User,Education,Experience,Skill
 from django.contrib import messages
+from django.http import HttpResponse, response
+from django.template.loader import get_template
+from xhtml2pdf import pisa
+from io import BytesIO
+import os
+
+from django.conf import settings
 # Create your views here.
 
 def CvFormPage(request,pk):
@@ -14,7 +22,7 @@ def CvFormPage(request,pk):
     skills = user.skill_set.all()
     educations = user.education_set.all()
     experiences = user.experience_set.all()
-    context ={'form':form,'skills':skills,'educations':educations,'experinces':experiences}
+    context ={'form':form,'skills':skills,'educations':educations,'experiences':experiences}
 
 
 
@@ -107,3 +115,25 @@ def RegisterPage(request):
 
 def DashboardPage(request):
     return render(request,'dashboard.html')
+
+
+
+def CvReady(request):
+    
+    user = User.objects.get(id=request.user.id)
+    skills = user.skill_set.all()
+    educations = user.education_set.all()
+    experiences = user.experience_set.all()
+    context ={'skills':skills,'educations':educations,'experiences':experiences}
+    template = loader.get_template('resume.html')
+    html = template.render(context)
+    option = {
+        'page-size':'Letter',
+        'encoding': 'UTF-8'
+    }
+    pdf = pdfkit.from_string(html,False,option)
+    response = HttpResponse(pdf,content_type ='application/pdf')
+    response['Content-Disposition'] = 'attachment'
+    return response
+    # return render(request,'resume.html',context)
+    

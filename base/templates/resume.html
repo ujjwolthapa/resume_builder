@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="http://localhost/static/styles/resume.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <main class="main-content">
+        <section class="left-section">
+            <div class="left-content">
+                <div class="profile">
+                    <div class="image">
+                        <img src="{{request.user.avatar.url}}" alt="">
+                    </div>
+                    <h2 class="name">{{ request.user.username }}</h2>
+                    <p class="career">{{ request.user.job_title }}</p>
+                </div>
+                <div class="contact-info">
+                    <h3 class="main-title">Contact Info</h3>
+                    <ul>
+                        <li>
+                            <i class="fa fa-phone"></i>
+                            {{ request.user.phoneNumber }}
+                        </li>
+                        <li>
+                            <i class="fa fa-fax"></i>
+                            {{ request.user.email }}
+                        </li>
+                        <!-- <li>
+                            <i class="fa fa-globe"></i>
+                            www.loremipsum.com
+                        </li> -->
+                        <!-- <li>
+                            <i class="fa fa-facebook"></i>
+                            www.facebook.com/lorem
+                        </li> -->
+                        <li>
+                            <i class="fa fa-instagram"></i>
+                            @{{request.user.instagram}}
+                        </li>
+                        <li>
+                            <i class="fa fa-map-marker"></i>
+                            {{request.user.location}}
+                        </li>
+                    </ul>
+                </div>
+                <div class="skills-section">
+                    <h3 class="main-title">Skills</h3>
+                    <ul>
+                        
+                        {% for skill in skills %}
+                            <li>
+                                 <p class="skill-title">{{skill.name}}</p>
+                            
+                            </li> 
+                        {% endfor %}
+                       
+                    </ul>
+                </div>
+                <!-- <div class="references-section">
+                    <h3 class="main-title">References</h3>
+                    <div class="referee">
+                        <h6 class="sub-title">Michael Bowen</h6>
+                        <p class="sub-para">Product Manager</p>
+                        <ul>
+                            <li>
+                                <i class="fa fa-phone"></i>
+                                07661892982
+                            </li>
+                            <li>
+                                <i class="fa fa-fax"></i>
+                                loremipsum@gmail.com
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="referee">
+                        <h6 class="sub-title">Joseph Kumar</h6>
+                        <p class="sub-para">Senior Developer</p>
+                        <ul>
+                            <li>
+                                <i class="fa fa-phone"></i>
+                                07661892982
+                            </li>
+                            <li>
+                                <i class="fa fa-fax"></i>
+                                loremipsum@gmail.com
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="referee">
+                        <h6 class="sub-title">Rick Ross</h6>
+                        <p class="sub-para">Product Manager</p>
+                        <ul>
+                            <li>
+                                <i class="fa fa-phone"></i>
+                                07661892982
+                            </li>
+                            <li>
+                                <i class="fa fa-fax"></i>
+                                loremipsum@gmail.com
+                            </li>
+                        </ul>
+                    </div>
+                </div> -->
+            </div>
+        </section>
+        <section class="right-section">
+            <div class="right-main-content">
+                <section class="about sect">
+                    <h2 class="right-title">About Me</h2>
+                    <p class="para">
+                        {{ request.user.about }}
+                    </p>
+                </section>
+
+                <section class="experince sect">
+                    <h2 class="right-title">Experience</h2>
+                    {% for experience in experiences %}
+                  
+                    <div class="timeline">
+                        <div class="left-tl-content">
+                            <h5 class="tl-title">{{experience.name}}</h5>
+                            <br>
+                            <p class="para">{{experience.timestart}} - {{experience.timeend}}</p>
+                            <br>
+                            <br>
+                        </div>
+                       
+                    </div>
+                       
+                    {% endfor %}
+                </section>
+                <section class="education sect">
+                    <h2 class="right-title">education</h2>
+                    <div class="timeline">
+                        <div class="left-tl-content">
+                            {% for education in educations %}
+                            <h5 class="tl-title">{{education.name}}</h5>
+                            <br>
+                           
+                            <p class="para">{{education.timestart}} - {{education.timeend}}</p>
+                            <br>
+                            <br>
+                        </div>
+                        <br>
+                            {% endfor %}
+                         
+                    </div>
+                </section>
+                <!-- <section class="awards sect">
+                    <h2 class="right-title">Awards</h2>
+                    <div class="timeline">
+                        <div class="left-tl-content">
+                            <h5 class="tl-title">Microsoft</h5>
+                            <p class="para">June 2016</p>
+                        </div>
+                        <div class="right-tl-content">
+                            <div class="tl-content">
+                                <h5 class="tl-title-2">Excellent Work</h5>
+                                <p class="para">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias cupiditate vitae 
+                                    voluptatem deleniti, 
+                                    laboriosam odio nobis quae fugit facilis quo.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline">
+                        <div class="left-tl-content">
+                            <h5 class="tl-title">Alphabet Inc</h5>
+                            <p class="para">June 2016</p>
+                        </div>
+                        <div class="right-tl-content">
+                            <div class="tl-content">
+                                <h5 class="tl-title-2">The Star Employee</h5>
+                                <p class="para">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias cupiditate vitae 
+                                    voluptatem deleniti, 
+                                    laboriosam odio nobis quae fugit facilis quo.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section> -->
+            </div>
+        </section>
+    </main>
+</body>
+</html>
